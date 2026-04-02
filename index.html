@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Controle de Pedidos</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="container">
+    <header class="header">
+      <h1>Controle de Pedidos</h1>
+      <p>Layout operacional em grade, inspirado em planilha, com armazenamento local.</p>
+    </header>
+
+    <section class="card scan-card">
+      <div class="selectors">
+        <label>
+          Loja
+          <select id="storeSelect"></select>
+        </label>
+
+        <label>
+          Plataforma
+          <select id="platformSelect"></select>
+        </label>
+      </div>
+
+      <div class="config-grid">
+        <label>
+          Nova loja
+          <input id="newStoreInput" type="text" placeholder="Ex: PADUA" />
+        </label>
+        <button id="addStoreBtn" type="button">Adicionar Loja</button>
+
+        <label>
+          Nova plataforma
+          <input id="newPlatformInput" type="text" placeholder="Ex: Shopee FLEX" />
+        </label>
+        <button id="addPlatformBtn" type="button">Adicionar Plataforma</button>
+      </div>
+
+      <label class="scan-label" for="barcodeInput">Código de barras</label>
+      <input
+        id="barcodeInput"
+        type="text"
+        inputmode="numeric"
+        autocomplete="off"
+        placeholder="Bipe o código de barras e pressione Enter"
+      />
+      <div id="feedback" class="feedback">Pronto para leitura.</div>
+
+      <div class="actions">
+        <button id="exportBtn" type="button">Exportar CSV</button>
+        <button id="clearBtn" type="button" class="danger">Limpar Dados</button>
+      </div>
+    </section>
+
+    <section class="card dashboard">
+      <h2>Dashboard</h2>
+      <div class="metrics">
+        <article class="metric">
+          <h3>Total Geral</h3>
+          <p id="totalCount">0</p>
+        </article>
+
+        <article class="metric">
+          <h3>Total por Loja</h3>
+          <ul id="byStore"></ul>
+        </article>
+
+        <article class="metric">
+          <h3>Total por Plataforma</h3>
+          <ul id="byPlatform"></ul>
+        </article>
+      </div>
+    </section>
+
+    <section class="card matrix-card">
+      <h2>Grade de Pedidos (estilo planilha)</h2>
+      <p class="helper">Cada bloco representa uma loja. As colunas são plataformas e as células exibem os códigos já bipados.</p>
+      <div id="matrixBoards" class="matrix-boards"></div>
+    </section>
+
+    <section class="card table-card">
+      <h2>Últimos pedidos</h2>
+      <div class="table-wrapper">
+        <table>
+          <thead>
+            <tr>
+              <th>Código</th>
+              <th>Loja</th>
+              <th>Plataforma</th>
+              <th>Data/Hora</th>
+            </tr>
+          </thead>
+          <tbody id="ordersTable"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
